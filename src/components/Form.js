@@ -2,7 +2,7 @@ import React from 'react';
 
 export default class Form extends React.Component {
 
-    salvarProfessional(nome, git, conhecimento) {
+    salvarProfessional() {
 
         let config = {
             headers:{
