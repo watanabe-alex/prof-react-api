@@ -6,7 +6,6 @@ class Table extends React.Component {
         return (
             <div>
                 <h1>Tabela profissionais</h1>
-                {this.props.professionals}
                 <table className="table">
                     <thead>
                         <tr>

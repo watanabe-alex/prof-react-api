@@ -1,5 +1,6 @@
 import React from 'react';
 import Table from './Table';
+import Form from './Form';
 
 class App extends React.Component {
 
@@ -10,7 +11,6 @@ class App extends React.Component {
             professionals: []
         }
 
-        this.handleSubmit = this.handleSubmit.bind(this); 
     }
 
     componentDidMount() {
@@ -18,15 +18,13 @@ class App extends React.Component {
         //puxa dados de profissionais via 
         let config = { method: "get" }
         fetch('http://localhost:8000/api/professionals', config)
-        .then(function(resposta) {
+        .then((resposta) => {
             return (resposta.json());
-        }).then(function(json) {
-            console.log(json);
-
-            this.state = {
-                professionals: json.values
-            }
- 
+        }).then((json) => {
+            this.setState({
+                ...this.state,
+                professionals: json
+            }); 
         }).catch(function(error){
             console.log(error);
         });
@@ -35,7 +33,10 @@ class App extends React.Component {
 
     render() {
         return (
-            <Table professionals={this.state.professionals}/>
+            <React.Fragment>
+                <Table professionals={this.state.professionals}/>
+                <Form />
+            </React.Fragment>
         )
     }
 }
