@@ -5,8 +5,8 @@ class Table extends React.Component {
     render() {
         return (
             <div>
-                {this.props.professionals}
                 <h1>Tabela profissionais</h1>
+                {this.props.professionals}
                 <table className="table">
                     <thead>
                         <tr>
@@ -16,10 +16,14 @@ class Table extends React.Component {
                     </thead>
                     
                     <tbody>
-                        <tr>
-                            <td>nome</td>
-                            <td>git</td>
-                        </tr>
+                        {this.props.professionals.map((professional) => {
+                            return(
+                                <tr key={professional.id}>
+                                    <td>{professional.name}</td>
+                                    <td>{professional.github}</td>
+                                </tr>
+                            )
+                        })}
                     </tbody>
                     
                 </table>

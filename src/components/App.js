@@ -10,6 +10,7 @@ class App extends React.Component {
             professionals: []
         }
 
+        this.handleSubmit = this.handleSubmit.bind(this); 
     }
 
     componentDidMount() {
@@ -18,9 +19,14 @@ class App extends React.Component {
         let config = { method: "get" }
         fetch('http://localhost:8000/api/professionals', config)
         .then(function(resposta) {
-            console.log(resposta.json());
+            return (resposta.json());
         }).then(function(json) {
             console.log(json);
+
+            this.state = {
+                professionals: json.values
+            }
+ 
         }).catch(function(error){
             console.log(error);
         });
@@ -29,7 +35,7 @@ class App extends React.Component {
 
     render() {
         return (
-            <Table />
+            <Table professionals={this.state.professionals}/>
         )
     }
 }
