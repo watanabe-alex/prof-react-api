@@ -1,10 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
+import 'bootstrap/dist/css/bootstrap.css';
+import App from './components/App';
 
 ReactDOM.render(
-  <div>
-    <h2>teste</h2>
-  </div>,
+  <App />,
   document.getElementById('root')
 );
