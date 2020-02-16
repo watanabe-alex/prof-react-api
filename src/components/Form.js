@@ -4,12 +4,15 @@ export default class Form extends React.Component {
 
     salvarProfessional() {
 
+        let n = document.getElementById("name").value;
+        let g = document.getElementById("github").value;
+
         let config = {
             headers:{
                 "Content-Type":"application/json"
             },
             method: "post",
-            body: JSON.stringify({name:'novo_nome', github:'novo_github', knowledge:'novo_knoledge'})
+            body: JSON.stringify({name: n, github: g, knowledge:'ggg'})
         }
 
         fetch('http://localhost:8000/api/professionals', config)
@@ -29,11 +32,11 @@ export default class Form extends React.Component {
                     <h3 className="mb-2">FORMULÁRIO</h3>
                     <div className="form-group">
                         <label>Nome:</label>
-                        <input type="text" name="name" placeholder="nome"/>
+                        <input type="text" name="name" id="name" placeholder="nome"/>
                     </div>
                     <div className="form-group">
                         <label>Github:</label>
-                        <input type="url" name="github" placeholder="github"/>
+                        <input type="text" name="github" id="github" placeholder="github"/>
                     </div>
                     <button type="submit" onClick={this.salvarProfessional}>Enviar</button>
                 </form>
